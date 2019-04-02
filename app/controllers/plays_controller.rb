@@ -4,7 +4,7 @@ class PlaysController < ApplicationController
   # GET /plays
   # GET /plays.json
   def index
-    @plays = Play.all
+    @plays = Play.all.order("created_at DESC")
   end
 
   # GET /plays/1
@@ -14,7 +14,7 @@ class PlaysController < ApplicationController
 
   # GET /plays/new
   def new
-    @play = Play.new
+    @play = current_user.plays.build
   end
 
   # GET /plays/1/edit
@@ -24,7 +24,7 @@ class PlaysController < ApplicationController
   # POST /plays
   # POST /plays.json
   def create
-    @play = Play.new(play_params)
+    @play = current_user.plays.build(play_params)
 
     respond_to do |format|
       if @play.save
