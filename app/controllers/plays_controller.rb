@@ -79,6 +79,6 @@ class PlaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def play_params
-      params.require(:play).permit(:title, :description, :director, :category_id)
+      params.require(:play).permit(:title, :description, :director, :category_id, :play_img)
     end
 end
