@@ -16,6 +16,17 @@
 
         <div class="collapse navbar-collapse" >
           <ul class="navbar-nav col">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sort 
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% Category.all.each do |category| %>
+                  <%= link_to category.name, plays_path(category: category.name), class: "dropdown-item" %>
+                <% end %>
+              </div>
+            </li>
+
             <% if user_signed_in? %>
               <li class="nav-item">
                 <%= link_to "Add Play", new_play_path, class: "nav-link" %>
