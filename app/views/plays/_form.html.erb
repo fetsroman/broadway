@@ -1,15 +1,7 @@
-
 <%= simple_form_for(@play) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :director %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= select_tag(:category_id, options_for_select(@categories), prompt: "Select Category") %>
+  <%= f.input :title, label: "Play Title" %>
+  <%= f.input :description %>
+  <%= f.input :director %>
+  <%= f.button :submit %>
 <% end %>

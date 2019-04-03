@@ -1,19 +1,11 @@
-<p id="notice"><%= notice %></p>
+<h2><%= @play.title %></h2>
+<h4><%= @play.director %></h4>
+<h6><%= @play.category.name %></h6>
+<p><%= @play.description %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @play.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @play.description %>
-</p>
-
-<p>
-  <strong>Director:</strong>
-  <%= @play.director %>
-</p>
-
-<%= link_to 'Edit', edit_play_path(@play) %> |
-<%= link_to 'Back', plays_path %>
+<% if user_signed_in? %>
+  <% if @play.user_id == current_user.id %>
+    <%= link_to 'Edit', edit_play_path(@play) %>
+    <%= link_to 'Delete', play_path(@play), method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
+<% end %>
