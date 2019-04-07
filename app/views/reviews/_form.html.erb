@@ -3,9 +3,16 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div id="rating-form">
-    <%= f.input :rating %>
+    <label>Rating </label>
   </div>
   
   <%= f.input :comment %>
   <%= f.button :submit, class: "btn-custom2" %>
 <% end %>
+
+<script>
+  $('#rating-form').raty({
+    path: '/assets/',
+    scoreName: 'review[rating]'
+  });
+</script>

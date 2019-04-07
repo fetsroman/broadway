@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:edit, :update, :destroy]
   before_action :find_play
+  before_action :authenticate_user!, only: [:new, :edit]
 
   # GET /reviews/new
   def new
