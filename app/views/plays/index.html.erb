@@ -6,9 +6,14 @@
   <div class="row">
     <% @plays.each do |play| %>
       <div class="col-md-3">
-        <a href="/plays/ <%= play.id %>">
-          <%= image_tag play.play_img.url(:play_index), class: "play" %>
-        </a>
+        <div class="card" style="width: 18rem;">
+          <%= image_tag play.image_url, class: "card-img-top" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= play.title %></h5>
+            <p class="card-text"><%= play.description %></p>
+            <%= link_to "View Post", play, class:"btn btn-primary" %>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
